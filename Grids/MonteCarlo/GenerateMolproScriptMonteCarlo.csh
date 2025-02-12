@@ -6,13 +6,12 @@
 set pwd = `pwd`
 
 set point = $1        
-set directory = /scratch/scratch/zcaposm/CH3+/MOLPRO/Grids/1D/CH3+_1D_GRIDS
-set fname = CH3+_1D_point_VQZ_${point}
+set directory = /home/zcaposm/Scratch/CH3+/MOLPRO/Grids/MonteCarlo/CH3+_MonteCarlo_Grids
+set fname = CH3+_MonteCarlo_VQZ_point_${point}
 
 cat<<endb> ${fname}.inp
 ***, CH3+ Ground State Energy with CCSD(T)-F12 and cc-pVQZ-F12
 memory,500,m;
-gthresh,energy=1.d-10,zero=1.d-14,thrint=1.d-14,oneint=1.d-14,twoint=1.d-14,prefac=1.d-20
 
 geometry={angstrom
 c 

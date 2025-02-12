@@ -5,8 +5,8 @@ stretchesSpacing::Vector{Float64} = [0.0000, -0.025,0.025, 0.050, -0.0500, -0.10
    -0.200, 0.300, -0.300, 0.400, 0.500, 0.600, 0.700]
 dihedralSpacing::Vector{Float64} = [0.0000, 1.000, -1.000, 2.500, -2.5000, 5.0000, -5.0000, 7.500, -7.500, 10.0000, -10.0000, 20.0000, 
     -20.0000, 30.0000, -30.0000, 50.0000, -50.0000, 60.0000]
-inversionSpacing::Vector{Float64} = [0.0000, 1.000,  2.5000,  5.0000,  7.500, 10.0000, 15.000,  20.00, 
-    30.000, 40.0000,  60.0000, 80.0000]
+inversionSpacing::Vector{Float64} = [0.0000, 0.500, 1.000, 1.500,  2.000, 2.5000,  3.000, 3.5000, 4.000, 4.500, 5.0000, 6.000, 7.000, 7.500, 8.000, 9.00, 10.0000, 12.50, 15.000, 17.500,  20.00, 
+    25.00, 30.000, 40.0000, 50.000, 60.0000]
 
 stretchesGrid::Int64 = size(stretchesSpacing)[1]
 dihedralGrid::Int64 = size(dihedralSpacing)[1]
@@ -27,7 +27,7 @@ function PrintGeometry(point::Int64, grid::Vector{Float64})
 end
 
 function SubmitJob(point::Int64, grid::Vector{Float64})
-    submission::Cmd = `qsub -e CH3+_1D_MP_$(point).e -o CH3+_1D_MP_$(point).o -l h_rt="11:59:00" GenerateMolproScript1D.csh $(point) $(grid[1]) $(grid[2]) $(grid[3]) $(grid[4]) $(grid[5]) $(grid[6]) $(grid[7]) $(grid[8]) $(grid[9])`
+    submission::Cmd = `qsub -e CH3+_1D_MP_$(point).e -o CH3+_1D_MP_$(point).o -l h_rt="11:59:00" -l mem=10G -l tmpfs=100G GenerateMolproScript1D.csh $(point) $(grid[1]) $(grid[2]) $(grid[3]) $(grid[4]) $(grid[5]) $(grid[6]) $(grid[7]) $(grid[8]) $(grid[9])`
     run(submission)
 end
 

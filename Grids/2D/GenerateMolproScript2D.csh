@@ -6,11 +6,11 @@
 set pwd = `pwd`
 
 set point = $1        
-set directory = /scratch/scratch/zcaposm/CH3+/MOLPRO/Grids/2D/CH3+_2D_GRIDS
-set fname = CH3+_2D_point_${point}
+set directory = /home/zcaposm/Scratch/CH3+/MOLPRO/Grids/2D/CH3+_2D_GRIDS
+set fname = CH3+_2D_VQZ_point_${point}
 
 cat<<endb> ${fname}.inp
-***, CH3+ Ground State Energy with CCSD(T)-F12 and cc-pVTZ-F12
+***, CH3+ Ground State Energy with CCSD(T)-F12 and cc-pVQZ-F12
 memory,500,m;
 
 geometry={angstrom
@@ -34,8 +34,8 @@ rho = $10
 set,nelec=8
 set,charge=+1
 
-! Use the cc-pVTZ-F12 basis set
-basis=cc-pVTZ-F12
+! Use the cc-pVQZ-F12 basis set
+basis=cc-pVQZ-F12
 
 hf
 
